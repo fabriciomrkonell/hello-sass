@@ -1,0 +1,81 @@
+/// variáveis
+$main-color: #d5d5d5;
+.botao{
+  background: $main-color;
+}
+
+/// operações e funções
+#navbar {
+	$navbar-width: 800px;
+	$items: 5;
+	width: $navbar-width;
+	li {
+		float: left;
+		width: $navbar-width/$items - 10px;
+	}
+}
+
+/// pseudo-elementos
+a {
+  color: #ce4dd6;
+  &:hover{
+  	color: #ffb3ff;
+  }
+  &:visited{
+  	color: #c458cb;
+  }
+}
+
+/// interpoação
+$vert: top;
+$horz: left;
+$radius: 10px;
+.rounded-#{$vert}-#{$horz} {
+	border-#{$vert}-#{$horz}-radius: $radius;
+  -moz-border-radius-#{$vert}#{$horz}: $radius;
+  -webkit-border-#{$vert}-#{$horz}-radius: $radius;
+}
+
+/// reuso
+@mixin rounded-top-left {
+  $vert: top;
+  $horz: left;
+  $radius: 10px;
+  border-#{$vert}-#{$horz}-radius: $radius;
+  -moz-border-radius-#{$vert}#{$horz}: $radius;
+  -webkit-border-#{$vert}-#{$horz}-radius: $radius;
+}
+#navbar li {
+	@include rounded-top-left;
+}
+#footer {
+	@include rounded-top-left;
+}
+
+/// hierarquia
+.content{
+	backgoround: #000;
+	font-family: Arial;
+	font-size: 15px;
+	p{
+		line-height: 20px;
+	}
+}
+.varios-elementos{
+ 	background: #ccc;
+ 	p{
+ 		color: red
+ 	}
+ 	a{
+ 		color: pink
+ 	}
+ 	input{
+   	-moz-border-radius: 20px;
+   	border-radius: 20px;
+   	-webkit-border-radius: 20px;
+   	border-left:solid 1px #eaeaeb;
+   	border-right:solid 1px #eaeaeb;
+   	border-bottom:solid 1px #eaeaeb;
+   	border-top:solid 3px #ccc;
+ 	}
+}
